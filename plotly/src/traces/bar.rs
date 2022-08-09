@@ -31,7 +31,7 @@ where
     #[serde(skip_serializing_if = "Option::is_none")]
     ids: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    width: Option<usize>,
+    width: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     offset: Option<Dim<usize>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -129,7 +129,7 @@ where
         Box::new(self)
     }
 
-    pub fn width(mut self, width: usize) -> Box<Bar<X, Y>> {
+    pub fn width(mut self, width: f64) -> Box<Bar<X, Y>> {
         self.width = Some(width);
         Box::new(self)
     }
@@ -321,7 +321,7 @@ mod tests {
             .legend_group("legend-group")
             .opacity(0.5)
             .ids(vec!["1"])
-            .width(999)
+            .width(999.0)
             .offset(5)
             .offset_array(vec![5, 5])
             .text("text")
@@ -361,7 +361,7 @@ mod tests {
             "legendgroup": "legend-group",
             "opacity": 0.5,
             "ids": ["1"],
-            "width": 999,
+            "width": 999.0,
             "offset": [5, 5],
             "text": ["text"],
             "textposition": ["none"],
