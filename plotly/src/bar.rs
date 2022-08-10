@@ -31,7 +31,7 @@ where
     #[serde(skip_serializing_if = "Option::is_none")]
     ids: Option<Vec<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    width: Option<usize>,
+    width: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     offset: Option<Dim<usize>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -129,7 +129,7 @@ where
         Box::new(self)
     }
 
-    pub fn width(mut self, width: usize) -> Box<Bar<X, Y>> {
+    pub fn width(mut self, width: f64) -> Box<Bar<X, Y>> {
         self.width = Some(width);
         Box::new(self)
     }
