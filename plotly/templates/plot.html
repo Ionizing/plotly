@@ -19,6 +19,14 @@
         <script type="module">
             const graph_div = document.getElementById("plotly-html-element");
             await Plotly.newPlot(graph_div, {{ plot| tojson | safe }});
+            function resizeGraph() {
+                Plotly.relayout("plotly-html-element", {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                });
+            }
+            window.addEventListener("resize", resizeGraph);
+            resizeGraph();
         </script>
     </div>
 </body>
